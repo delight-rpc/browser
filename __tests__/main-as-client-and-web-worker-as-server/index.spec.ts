@@ -1,10 +1,7 @@
 import { createClient } from '@src/client'
+import { IAPI } from './api'
 
-interface IAPI {
-  echo(message: string): string
-}
-
-describe('Web Workers: createClient, createServer', () => {
+describe('Main as Client, Web Worker as Server', () => {
   let worker: Worker
   beforeEach(() => {
     worker = new Worker(new URL('./worker.ts', import.meta.url))
