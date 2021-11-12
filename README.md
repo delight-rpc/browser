@@ -66,11 +66,17 @@ interface IAPI {
   echo(message: string): string
 }
 
+const api: IAPI = {
+  echo(message) {
+    return message
+  }
+}
+
 const channel = new MessageChannel()
 channel.port1.start()
 channel.port2.start()
 
-createServer<IAPI>(API, channel.port1)
+createServer<IAPI>(api, channel.port1)
 
 const client = createClient<IAPI>(channel.port2)
 await client.echo('hello world')
