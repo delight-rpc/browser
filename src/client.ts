@@ -5,7 +5,7 @@ import { JsonRpcResponse } from 'justypes'
 
 export function createClient<IAPI extends object>(
   port: Window | MessagePort | Worker
-): DelightRPC.RequestProxy<IAPI> {
+): [client: DelightRPC.RequestProxy<IAPI>, close: () => void] {
   const pendings: { [id: string]: Deferred<JsonRpcResponse<any>> } = {}
 
   // `(event: MessageEvent) => void`作为handler类型通用于port的三种类型.
@@ -29,7 +29,14 @@ export function createClient<IAPI extends object>(
     }
   )
 
-  return client
+  return [client, close]
+
+  function close(): void {
+    port.removeEventListener('message', handler as any)
+    if (port instanceof MessagePort) {
+      port.close()
+    }
+  }
 
   function handler(event: MessageEvent) {
     const res = event.data

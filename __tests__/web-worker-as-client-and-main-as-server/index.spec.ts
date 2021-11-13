@@ -13,7 +13,7 @@ describe('Web Worker as Client, Main as Server', () => {
     const cancelServer = createServer(api, worker)
 
     try {
-      const client = createClient<{ eval: (code: string) => any }>(worker)
+      const [client] = createClient<{ eval: (code: string) => any }>(worker)
       const result = await client.eval('client.echo("hello")')
       expect(result).toEqual('hello')
     } finally {

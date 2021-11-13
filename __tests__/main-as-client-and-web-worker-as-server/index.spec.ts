@@ -9,7 +9,7 @@ describe('Main as Client, Web Worker as Server', () => {
   afterEach(() => worker.terminate())
 
   it('echo', async () => {
-    const client = createClient<IAPI>(worker)
+    const [client] = createClient<IAPI>(worker)
 
     const result = await client.echo('hello')
 

@@ -29,7 +29,7 @@ describe('MessageChannel: createClient, createServer', () => {
   })
 
   it('echo', async () => {
-    const client = createClient<IAPI>(channel.port2)
+    const [client] = createClient<IAPI>(channel.port2)
 
     const result = await client.echo('hello')
 

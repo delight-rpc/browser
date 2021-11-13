@@ -19,7 +19,7 @@ interface IAPI {
 import { createClient } from '@delight-rpc/browser'
 
 const worker = new Worker('./worker.js')
-const client = createClient<IAPI>(worker)
+const [client] = createClient<IAPI>(worker)
 await client.echo('hello world')
 
 // worker.ts
@@ -56,7 +56,7 @@ createServer(api, worker)
 // worker.ts
 import { createClient } from '@delight-rpc/browser'
 
-const client = createClient<IAPI>(self)
+const [client] = createClient<IAPI>(self)
 await client.echo('hello world')
 ```
 
@@ -75,7 +75,7 @@ const api: IAPI = {
 const channel = new MessageChannel()
 createServer<IAPI>(api, channel.port1)
 
-const client = createClient<IAPI>(channel.port2)
+const [client] = createClient<IAPI>(channel.port2)
 await client.echo('hello world')
 ```
 
@@ -84,7 +84,7 @@ await client.echo('hello world')
 ```ts
 function createClient<IAPI extends object>(
   port: Window | MessagePort | Worker
-): DelightRPC.RequestProxy<IAPI>
+): [client: DelightRPC.RequestProxy<IAPI>, close: () => void]
 ```
 
 ### createServer
