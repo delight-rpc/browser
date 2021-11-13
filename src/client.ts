@@ -2,6 +2,7 @@ import * as DelightRPC from 'delight-rpc'
 import { isJsonRpcSuccess, isJsonRpcError } from '@blackglory/types'
 import { Deferred } from 'extra-promise'
 import { JsonRpcResponse } from 'justypes'
+import { CustomError } from '@blackglory/errors'
 
 export function createClient<IAPI extends object>(
   port: Window | MessagePort | Worker
@@ -36,6 +37,10 @@ export function createClient<IAPI extends object>(
     if (port instanceof MessagePort) {
       port.close()
     }
+    for (const [key, deferred] of Object.entries(pendings)) {
+      deferred.reject(new ClientClosed())
+      delete pendings[key]
+    }
   }
 
   function handler(event: MessageEvent) {
@@ -47,3 +52,5 @@ export function createClient<IAPI extends object>(
     }
   }
 }
+
+export class ClientClosed extends CustomError {}

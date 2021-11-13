@@ -69,6 +69,7 @@
     "webpack": "^5.64.0"
   },
   "dependencies": {
+    "@blackglory/errors": "^1.1.2",
     "@blackglory/types": "^0.5.2",
     "delight-rpc": "^0.1.21",
     "extra-promise": "^0.19.1",
