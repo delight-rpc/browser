@@ -73,9 +73,6 @@ const api: IAPI = {
 }
 
 const channel = new MessageChannel()
-channel.port1.start()
-channel.port2.start()
-
 createServer<IAPI>(api, channel.port1)
 
 const client = createClient<IAPI>(channel.port2)
