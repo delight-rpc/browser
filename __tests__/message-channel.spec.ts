@@ -13,25 +13,20 @@ const API: IAPI = {
 
 describe('MessageChannel: createClient, createServer', () => {
   let channel: MessageChannel
-  let cancelServer: () => void
+  let stopServer: () => void
   beforeEach(() => {
     channel = new MessageChannel()
-    channel.port1.start()
-    channel.port2.start()
-
-    cancelServer = createServer<IAPI>(API, channel.port1)
+    stopServer = createServer<IAPI>(API, channel.port1)
   })
   afterEach(() => {
-    cancelServer()
-
-    channel.port1.close()
-    channel.port2.close()
+    stopServer()
   })
 
   it('echo', async () => {
-    const [client] = createClient<IAPI>(channel.port2)
+    const [client, close] = createClient<IAPI>(channel.port2)
 
     const result = await client.echo('hello')
+    close()
 
     expect(result).toEqual('hello')
   })
