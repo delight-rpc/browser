@@ -1,13 +1,11 @@
 import * as DelightRPC from 'delight-rpc'
-import { isJsonRpcSuccess, isJsonRpcError } from '@blackglory/types'
 import { Deferred } from 'extra-promise'
-import { JsonRpcResponse } from 'justypes'
 import { CustomError } from '@blackglory/errors'
 
 export function createClient<IAPI extends object>(
   port: Window | MessagePort | Worker
-): [client: DelightRPC.RequestProxy<IAPI>, close: () => void] {
-  const pendings: { [id: string]: Deferred<JsonRpcResponse<any>> } = {}
+): [client: DelightRPC.ClientProxy<IAPI>, close: () => void] {
+  const pendings: { [id: string]: Deferred<DelightRPC.IResponse<any>> } = {}
 
   // `(event: MessageEvent) => void`作为handler类型通用于port的三种类型.
   // 但由于TypeScript标准库的实现方式无法将三种类型的情况合并起来, 因此会出现类型错误.
@@ -18,14 +16,14 @@ export function createClient<IAPI extends object>(
   }
 
   const client = DelightRPC.createClient<IAPI>(
-    async function request(jsonRpc) {
-      const res = new Deferred<JsonRpcResponse<any>>()
-      pendings[jsonRpc.id] = res
+    async function send(request) {
+      const res = new Deferred<DelightRPC.IResponse<any>>()
+      pendings[request.id] = res
       try {
-        port.postMessage(jsonRpc)
+        port.postMessage(request)
         return await res
       } finally {
-        delete pendings[jsonRpc.id]
+        delete pendings[request.id]
       }
     }
   )
@@ -45,9 +43,9 @@ export function createClient<IAPI extends object>(
 
   function handler(event: MessageEvent) {
     const res = event.data
-    if (isJsonRpcSuccess(res)) {
+    if (DelightRPC.isResult(res)) {
       pendings[res.id].resolve(res)
-    } else if (isJsonRpcError(res)) {
+    } else if (DelightRPC.isError(res)) {
       pendings[res.id].reject(res)
     }
   }

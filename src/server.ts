@@ -1,5 +1,4 @@
-import { isJsonRpcRequest } from '@blackglory/types'
-import { createResponse } from 'delight-rpc'
+import * as DelightRPC from 'delight-rpc'
 
 export function createServer<IAPI extends object>(
   api: IAPI
@@ -16,8 +15,8 @@ export function createServer<IAPI extends object>(
 
   async function handler(event: MessageEvent): Promise<void> {
     const req = event.data
-    if (isJsonRpcRequest(req)) {
-      const result = await createResponse(api, req)
+    if (DelightRPC.isRequest(req)) {
+      const result = await DelightRPC.createResponse(api, req)
 
       port.postMessage(result)
     }

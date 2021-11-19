@@ -84,7 +84,7 @@ await client.echo('hello world')
 ```ts
 function createClient<IAPI extends object>(
   port: Window | MessagePort | Worker
-): [client: DelightRPC.RequestProxy<IAPI>, close: () => void]
+): [client: DelightRPC.ClientProxy<IAPI>, close: () => void]
 ```
 
 ### createServer
