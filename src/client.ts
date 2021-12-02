@@ -32,9 +32,6 @@ export function createClient<IAPI extends object>(
 
   function close(): void {
     port.removeEventListener('message', handler as any)
-    if (port instanceof MessagePort) {
-      port.close()
-    }
     for (const [key, deferred] of Object.entries(pendings)) {
       deferred.reject(new ClientClosed())
       delete pendings[key]
