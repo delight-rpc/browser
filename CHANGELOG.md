@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/delight-rpc/browser/compare/v1.0.0...v1.1.0) (2021-12-02)
+
+
+### Features
+
+* stop closing MessagePort ([a3d35ae](https://github.com/delight-rpc/browser/commit/a3d35aea9ab2b11d2a3b5601a72879a54159c9e8))
+
 ## [1.0.0](https://github.com/delight-rpc/browser/compare/v0.2.2...v1.0.0) (2021-11-19)
 
 
