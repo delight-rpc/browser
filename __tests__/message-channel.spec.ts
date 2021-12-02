@@ -16,6 +16,9 @@ describe('MessageChannel: createClient, createServer', () => {
   let stopServer: () => void
   beforeEach(() => {
     channel = new MessageChannel()
+    channel.port1.start()
+    channel.port2.start()
+
     stopServer = createServer<IAPI>(API, channel.port1)
   })
   afterEach(() => {
