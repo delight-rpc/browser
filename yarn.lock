@@ -54,6 +54,16 @@
   resolved "https://registry.yarnpkg.com/@blackglory/go/-/go-0.1.0.tgz#a145a98d17593549a91ed79766230f5c7719e1de"
   integrity sha512-p6kO5ThjCLRg3giGiaYhYcMZeA2akHAcCzjW7D5zz2YTJQ2JDKNzSk4WkKEFSpSiFcMzeNABN+tz1tasn4D2tg==
 
+"@blackglory/go@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@blackglory/go/-/go-0.1.1.tgz#c0c766a1381a72a1d1557f54e11208b4b287fb28"
+  integrity sha512-ikJEGmHmj+HLQRKQVEHL6bPRsJfTiuQBP3vZS7uH8VkWDHHCiat8VOi0xH2+2adTVNDCsXZ2zrqiMPa3Y8xbuw==
+
+"@blackglory/pass@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@blackglory/pass/-/pass-0.1.0.tgz#c78c91c89d800bf4f2e3a16bbebd4116f5267d2f"
+  integrity sha512-zhCUS+Jcb87yHAgZjmFCG9qwX94UAVepy6eBKsvigC4RYJhpxhNCOmmls/gU6fR4iCtWHj0q1ucX4lY8RCdVtA==
+
 "@blackglory/structures@^0.2.6":
   version "0.2.6"
   resolved "https://registry.yarnpkg.com/@blackglory/structures/-/structures-0.2.6.tgz#b2778fbe25a5b0722fb25caab20fac3873bde95c"
@@ -4052,6 +4062,14 @@ return-style@^0.12.4:
   integrity sha512-VCNNx2vcmviKFLJ4kh4syWNSUgPFRtpmaAcDWEA6Hegy7rl/MIW9uNOpti4qDkEn4seYCZd3yRKl0T1pmHKPEA==
   dependencies:
     "@blackglory/go" "^0.1.0"
+
+return-style@^0.12.5:
+  version "0.12.5"
+  resolved "https://registry.yarnpkg.com/return-style/-/return-style-0.12.5.tgz#b24f4ece3fdcddbd6b3f519bd9ce487389d6ca70"
+  integrity sha512-GirGtj9KhNPEusgjkUPm9Yt4duAdRJ75T43CSb2S072Pgi8rHsoffOmWYffbOUcklfXNc6JxbVTqSkniCThppA==
+  dependencies:
+    "@blackglory/go" "^0.1.1"
+    "@blackglory/pass" "^0.1.0"
 
 reusify@^1.0.4:
   version "1.0.4"

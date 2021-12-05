@@ -1,13 +1,18 @@
 import { createClient } from '@src/client'
 import { createServer } from '@src/server'
+import { getErrorPromise } from 'return-style'
 
 interface IAPI {
   echo(message: string): string
+  error(message: string): never
 }
 
-const API: IAPI = {
+const api: IAPI = {
   echo(message: string): string {
     return message
+  }
+, error(message: string): never {
+    throw new Error(message)
   }
 }
 
@@ -19,7 +24,7 @@ describe('MessageChannel: createClient, createServer', () => {
     channel.port1.start()
     channel.port2.start()
 
-    stopServer = createServer<IAPI>(API, channel.port1)
+    stopServer = createServer<IAPI>(api, channel.port1)
   })
   afterEach(() => {
     stopServer()
@@ -31,6 +36,16 @@ describe('MessageChannel: createClient, createServer', () => {
     const result = await client.echo('hello')
     close()
 
-    expect(result).toEqual('hello')
+    expect(result).toBe('hello')
+  })
+
+  it('error', async () => {
+    const [client, close] = createClient<IAPI>(channel.port2)
+
+    const err = await getErrorPromise(client.error('hello'))
+    close()
+
+    expect(err).toBeInstanceOf(Error)
+    expect(err!.message).toMatch('Error: hello')
   })
 })
