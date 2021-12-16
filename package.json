@@ -11,6 +11,9 @@
   "repository": "git@github.com:delight-rpc/browser.git",
   "author": "BlackGlory <woshenmedoubuzhidao@blackglory.me>",
   "license": "MIT",
+  "engines": {
+    "node": ">=16"
+  },
   "scripts": {
     "lint": "eslint --ext .js,.jsx,.ts,.tsx --quiet src",
     "test": "karma start karma.config.js --single-run",
@@ -41,16 +44,16 @@
     "@rollup/plugin-alias": "^3.1.8",
     "@rollup/plugin-commonjs": "^21.0.1",
     "@rollup/plugin-json": "^4.1.0",
-    "@rollup/plugin-node-resolve": "^13.0.6",
+    "@rollup/plugin-node-resolve": "^13.1.1",
     "@rollup/plugin-replace": "^3.0.0",
     "@rollup/plugin-typescript": "^8.3.0",
     "@types/jasmine": "^3.10.2",
-    "@typescript-eslint/eslint-plugin": "^5.5.0",
-    "@typescript-eslint/parser": "^5.5.0",
+    "@typescript-eslint/eslint-plugin": "^5.7.0",
+    "@typescript-eslint/parser": "^5.7.0",
     "cross-env": "^7.0.3",
-    "delight-rpc": "^1.1.1",
-    "eslint": "8.4.0",
-    "extra-filesystem": "^0.3.13",
+    "delight-rpc": "^1.1.2",
+    "eslint": "8.4.1",
+    "extra-filesystem": "^0.3.14",
     "husky": "4",
     "karma": "^6.3.9",
     "karma-chrome-launcher": "^3.1.0",
@@ -59,7 +62,7 @@
     "npm-run-all": "^4.1.5",
     "return-style": "^0.12.5",
     "rimraf": "^3.0.2",
-    "rollup": "^2.60.2",
+    "rollup": "^2.61.1",
     "rollup-plugin-analyzer": "^4.0.0",
     "rollup-plugin-terser": "^7.0.2",
     "standard-version": "^9.3.2",
@@ -67,12 +70,12 @@
     "tsconfig-paths-webpack-plugin": "^3.5.2",
     "tscpaths": "^0.0.9",
     "tslib": "^2.3.1",
-    "typescript": "^4.5.2",
-    "webpack": "^5.64.4"
+    "typescript": "^4.5.4",
+    "webpack": "^5.65.0"
   },
   "dependencies": {
     "@blackglory/errors": "^1.1.2",
-    "extra-promise": "^0.19.4"
+    "extra-promise": "^0.20.0"
   },
   "peerDependencies": {
     "delight-rpc": "^1.1.1"
