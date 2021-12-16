@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0](https://github.com/delight-rpc/browser/compare/v1.2.1...v2.0.0) (2021-12-16)
+
+
+### ⚠ BREAKING CHANGES
+
+* - The minimum version is Node.js v16
+
+* upgrade dependencies ([27fcf60](https://github.com/delight-rpc/browser/commit/27fcf60b45a8ee5daa6ae01efb9c4ec6e9adcbd4))
+
 ### [1.2.1](https://github.com/delight-rpc/browser/compare/v1.2.0...v1.2.1) (2021-12-05)
 
 
