@@ -64,15 +64,6 @@
   resolved "https://registry.yarnpkg.com/@blackglory/pass/-/pass-0.1.0.tgz#c78c91c89d800bf4f2e3a16bbebd4116f5267d2f"
   integrity sha512-zhCUS+Jcb87yHAgZjmFCG9qwX94UAVepy6eBKsvigC4RYJhpxhNCOmmls/gU6fR4iCtWHj0q1ucX4lY8RCdVtA==
 
-"@blackglory/structures@^0.2.6":
-  version "0.2.6"
-  resolved "https://registry.yarnpkg.com/@blackglory/structures/-/structures-0.2.6.tgz#b2778fbe25a5b0722fb25caab20fac3873bde95c"
-  integrity sha512-64OI9G87aFqaGKzzZbaahWoZ4eozD3GJ+lvHtEprKFfWO5L+YyRv0zyCMb7QcmuGjT/xry80HIiQkcl3CQ7E/Q==
-  dependencies:
-    "@blackglory/errors" "^1.1.2"
-    extra-timers "^0.2.2"
-    justypes "^0.1.6"
-
 "@blackglory/structures@^0.3.1":
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/@blackglory/structures/-/structures-0.3.1.tgz#3308a8d33a967d9acf74c05f01ff70b3cf814ff3"
@@ -692,13 +683,6 @@ JSONStream@^1.0.4:
   dependencies:
     jsonparse "^1.2.0"
     through ">=2.2.7 <3"
-
-abort-controller@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/abort-controller/-/abort-controller-3.0.0.tgz#eaf54d53b62bae4138e809ca225c8439a6efb392"
-  integrity sha512-h8lQ8tacZYnR3vNQTgibj+tODHI5/+l06Au2Pcriv/Gmet0eaj4TwWH41sO9wnHDiQsEj19q0drzdWdeAHtweg==
-  dependencies:
-    event-target-shim "^5.0.0"
 
 accepts@~1.3.4:
   version "1.3.7"
@@ -1394,11 +1378,6 @@ copy-descriptor@^0.1.0:
   resolved "https://registry.yarnpkg.com/copy-descriptor/-/copy-descriptor-0.1.1.tgz#676f6eb3c39997c2ee1ac3a924fd6124748f578d"
   integrity sha1-Z29us8OZl8LuGsOpJP1hJHSPV40=
 
-core-js@^3.19.2:
-  version "3.19.2"
-  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.19.2.tgz#ae216d7f4f7e924d9a2e3ff1e4b1940220f9157b"
-  integrity sha512-ciYCResnLIATSsXuXnIOH4CbdfgV+H1Ltg16hJFN7/v6OxqnFr/IFGeLacaZ+fHLAm0TBbXwNK9/DNBzBUrO/g==
-
 core-js@^3.20.0:
   version "3.20.0"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.20.0.tgz#1c5ac07986b8d15473ab192e45a2e115a4a95b79"
@@ -1906,11 +1885,6 @@ esutils@^2.0.2:
   resolved "https://registry.yarnpkg.com/esutils/-/esutils-2.0.3.tgz#74d2eb4de0b8da1293711910d50775b9b710ef64"
   integrity sha512-kVscqXk4OCp68SZ0dkgEKVi6/8ij300KBWTJq32P/dYeWTSwK41WyTxalN1eRmA5Z9UU/LX9D7FWSmV9SAYx6g==
 
-event-target-shim@^5.0.0:
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/event-target-shim/-/event-target-shim-5.0.1.tgz#5d4d3ebdf9583d63a5333ce2deb7480ab2b05789"
-  integrity sha512-i/2XbnSz/uxRCU6+NdVJgKWDTM427+MqYbkQzD321DuCQJUqOuJKIA0IM2+W2xtYHdKOmZ4dR6fExsd4SXL+WQ==
-
 eventemitter3@^4.0.0, eventemitter3@^4.0.7:
   version "4.0.7"
   resolved "https://registry.yarnpkg.com/eventemitter3/-/eventemitter3-4.0.7.tgz#2de9b68f6528d5644ef5c59526a1b4a07306169f"
@@ -1983,23 +1957,15 @@ extglob@^2.0.4:
     snapdragon "^0.8.1"
     to-regex "^3.0.1"
 
-extra-filesystem@^0.3.14:
-  version "0.3.14"
-  resolved "https://registry.yarnpkg.com/extra-filesystem/-/extra-filesystem-0.3.14.tgz#ec52185c3889ed2498bb62a6acd1e7eb5d3c4a9b"
-  integrity sha512-QraL6B5ufX3OILXEibUlk+lJR4DdpPX7FoPaTNm+Z2P3WrpfHTyLqvY2SlLx2fsDOqQHOAtCUT69aW8f9n3lcw==
+extra-filesystem@^0.4.1:
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/extra-filesystem/-/extra-filesystem-0.4.1.tgz#3887cdfbfe323dff27481cf78cf8d66364cb3e3b"
+  integrity sha512-H1pKoR5E0P0rgyhg+/h5/cfD//4ADcS2z7LZRNyAupmIamnHo+bwj7lV3w67Tkb69uEZ1DmU2BBsw9i2+qmyfg==
   dependencies:
     "@blackglory/pass" "^0.1.0"
-    extra-promise "^0.19.4"
+    extra-promise "^0.21.0"
     fs-extra "^10.0.0"
     tmp-promise "^3.0.3"
-
-extra-generator@^0.2.14:
-  version "0.2.14"
-  resolved "https://registry.yarnpkg.com/extra-generator/-/extra-generator-0.2.14.tgz#374f43c977cecd77b10c7fc40ccf87e27c346128"
-  integrity sha512-nlfQnn93zSolyh1rxv7nGDWGtksmdWKndySCC5aQQ5nYO88WajwJ5x7vxRUVZUZsGdE3GIntBgmlxBMB48T1Wg==
-  dependencies:
-    "@blackglory/errors" "^1.1.2"
-    extra-lazy "^0.1.0"
 
 extra-generator@^0.2.15:
   version "0.2.15"
@@ -2017,30 +1983,10 @@ extra-lazy@^0.1.0:
   dependencies:
     lodash.once "^4.1.1"
 
-extra-promise@^0.19.4:
-  version "0.19.4"
-  resolved "https://registry.yarnpkg.com/extra-promise/-/extra-promise-0.19.4.tgz#50c87b499ed18c54ceabf45666bb6ab1d9d2f775"
-  integrity sha512-tvdAs2rz/hxlqJVAjCAAPKoEuDmbtfSjWdK231fwtMmcN49abYGcUzXgcgjtjLizq4nAdEg/34lv5ewqfale7g==
-  dependencies:
-    "@blackglory/errors" "^1.1.2"
-    "@blackglory/go" "^0.1.1"
-    "@blackglory/pass" "^0.1.0"
-    "@blackglory/structures" "^0.2.6"
-    "@blackglory/types" "^0.5.2"
-    abort-controller "^3.0.0"
-    core-js "^3.19.2"
-    eventemitter3 "^4.0.7"
-    extra-generator "^0.2.14"
-    iterable-operator "^0.14.4"
-    justypes "^0.1.6"
-    lodash.once "^4.1.1"
-    reflect-metadata "^0.1.13"
-    return-style "^0.12.4"
-
-extra-promise@^0.20.0:
-  version "0.20.0"
-  resolved "https://registry.yarnpkg.com/extra-promise/-/extra-promise-0.20.0.tgz#28ebb6285a7ff187b280f58011d66532c75281a1"
-  integrity sha512-i+x315uLOeHv6ofJu4I3VS9yEohQyKAEsN4HTFO2MmkzZOa7VKVFlcKvgPD9NbFBFB15DZQFMxkB6z3EaoLBOg==
+extra-promise@^0.21.0:
+  version "0.21.0"
+  resolved "https://registry.yarnpkg.com/extra-promise/-/extra-promise-0.21.0.tgz#855d0a34d344c7b0bd82f9866ee526367c1770b1"
+  integrity sha512-yPJat8oubkp+sK3ONrsIJ651eN1eGsKJY9+valfiY5ihugjpB+L3gWG7/iGiQZgkIZT4i2N71YMA9itLTWgfvw==
   dependencies:
     "@blackglory/errors" "^1.1.2"
     "@blackglory/go" "^0.1.1"
@@ -2060,11 +2006,6 @@ extra-rand@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/extra-rand/-/extra-rand-0.1.0.tgz#dd663f2da116c15b5476646fa4025668cd2015b3"
   integrity sha512-Y3DBl2J8PGndKVCeELV0JtUBxHJLO1Yn8SBHabUgLOzddQdJYgOtTWs/xdiK4sc66pOwfFL8CNhTE7bPxu9vwA==
-
-extra-timers@^0.2.2:
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/extra-timers/-/extra-timers-0.2.2.tgz#d6a14e2ac1315ba8d61aa1ca9872fde127055323"
-  integrity sha512-n9J9fm8/myqOCg9yatwrL/x32N6HEY94KPUu2utg33DbTvpnwA6IKNvSnsDPaOvhMgzX5p1kZx43etsVgCJlWA==
 
 extra-timers@^0.2.4:
   version "0.2.4"
@@ -4085,13 +4026,6 @@ ret@~0.1.10:
   version "0.1.15"
   resolved "https://registry.yarnpkg.com/ret/-/ret-0.1.15.tgz#b8a4825d5bdb1fc3f6f53c2bc33f81388681c7bc"
   integrity sha512-TTlYpa+OL+vMMNG24xSlQGEJ3B/RzEfUlLct7b5G/ytav+wPrplCpVMFuwzXbkecJrb6IYo1iFb0S9v37754mg==
-
-return-style@^0.12.4:
-  version "0.12.4"
-  resolved "https://registry.yarnpkg.com/return-style/-/return-style-0.12.4.tgz#00f77c1570041b645650b231fab20fd8fe95b780"
-  integrity sha512-VCNNx2vcmviKFLJ4kh4syWNSUgPFRtpmaAcDWEA6Hegy7rl/MIW9uNOpti4qDkEn4seYCZd3yRKl0T1pmHKPEA==
-  dependencies:
-    "@blackglory/go" "^0.1.0"
 
 return-style@^0.12.5:
   version "0.12.5"

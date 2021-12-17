@@ -11,9 +11,6 @@
   "repository": "git@github.com:delight-rpc/browser.git",
   "author": "BlackGlory <woshenmedoubuzhidao@blackglory.me>",
   "license": "MIT",
-  "engines": {
-    "node": ">=16"
-  },
   "scripts": {
     "lint": "eslint --ext .js,.jsx,.ts,.tsx --quiet src",
     "test": "karma start karma.config.js --single-run",
@@ -53,7 +50,7 @@
     "cross-env": "^7.0.3",
     "delight-rpc": "^1.1.2",
     "eslint": "8.4.1",
-    "extra-filesystem": "^0.3.14",
+    "extra-filesystem": "^0.4.1",
     "husky": "4",
     "karma": "^6.3.9",
     "karma-chrome-launcher": "^3.1.0",
@@ -75,7 +72,7 @@
   },
   "dependencies": {
     "@blackglory/errors": "^1.1.2",
-    "extra-promise": "^0.20.0"
+    "extra-promise": "^0.21.0"
   },
   "peerDependencies": {
     "delight-rpc": "^1.1.1"
