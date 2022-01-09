@@ -1,7 +1,7 @@
 import * as DelightRPC from 'delight-rpc'
 
 export function createServer<IAPI extends object>(
-  api: IAPI
+  api: DelightRPC.ImplementationOf<IAPI>
 , port: Window | MessagePort | Worker
 , parameterValidators?: DelightRPC.ParameterValidators<IAPI>
 ): () => void {
