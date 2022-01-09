@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.1.2](https://github.com/delight-rpc/browser/compare/v2.1.1...v2.1.2) (2022-01-09)
+
+
+### Bug Fixes
+
+* peer dependencies ([85aa39f](https://github.com/delight-rpc/browser/commit/85aa39f8cfcf0b037636f86ccdfc0ae646846958))
+
 ### [2.1.1](https://github.com/delight-rpc/browser/compare/v2.1.0...v2.1.1) (2022-01-09)
 
 ## [2.1.0](https://github.com/delight-rpc/browser/compare/v2.0.1...v2.1.0) (2021-12-29)
