@@ -5,6 +5,7 @@ import { CustomError } from '@blackglory/errors'
 export function createClient<IAPI extends object>(
   port: Window | MessagePort | Worker
 , parameterValidators?: DelightRPC.ParameterValidators<IAPI>
+, expectedVersion?: `${number}.${number}.${number}`
 ): [client: DelightRPC.ClientProxy<IAPI>, close: () => void] {
   const pendings: { [id: string]: Deferred<DelightRPC.IResponse<any>> } = {}
 
@@ -25,6 +26,7 @@ export function createClient<IAPI extends object>(
       }
     }
   , parameterValidators
+  , expectedVersion
   )
 
   return [client, close]
