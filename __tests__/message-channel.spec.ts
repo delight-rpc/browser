@@ -46,6 +46,6 @@ describe('MessageChannel: createClient, createServer', () => {
     close()
 
     expect(err).toBeInstanceOf(Error)
-    expect(err!.message).toMatch('Error: hello')
+    expect(err!.message).toMatch('hello')
   })
 })

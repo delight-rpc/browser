@@ -37,7 +37,7 @@ describe('Web Worker as Client, Main as Server', () => {
       const err = await getErrorPromise(client.eval('client.error("hello")'))
 
       expect(err).toBeInstanceOf(Error)
-      expect(err!.message).toMatch('Error: hello')
+      expect(err!.message).toMatch('hello')
     } finally {
       cancelServer()
       worker.terminate()
