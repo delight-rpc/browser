@@ -92,6 +92,14 @@ function createClient<IAPI extends object>(
 ): [client: DelightRPC.ClientProxy<IAPI>, close: () => void]
 ```
 
+### createBatchClient
+```ts
+function createBatchClient<IAPI extends object>(
+  port: Window | MessagePort | Worker
+, expectedVersion?: `${number}.${number}.${number}`
+): [client: DelightRPC.BatchClient<IAPI>, close: () => void]
+```
+
 ### createServer
 ```ts
 function createServer<IAPI extends object>(
