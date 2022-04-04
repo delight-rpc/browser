@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.1.2](https://github.com/delight-rpc/browser/compare/v3.1.1...v3.1.2) (2022-04-04)
+
+
+### Bug Fixes
+
+* createServer for batch requests ([9718b06](https://github.com/delight-rpc/browser/commit/9718b06902f13461bf3dd1409996e584ec32ddd6))
+
 ### [3.1.1](https://github.com/delight-rpc/browser/compare/v3.1.0...v3.1.1) (2022-03-18)
 
 
