@@ -5,9 +5,10 @@ import { IRequest, IResponse, IError, IBatchRequest, IBatchResponse } from '@del
 
 export function createClient<IAPI extends object>(
   port: Window | MessagePort | Worker
-, { parameterValidators, expectedVersion }: {
+, { parameterValidators, expectedVersion, channel }: {
     parameterValidators?: DelightRPC.ParameterValidators<IAPI>
   , expectedVersion?: `${number}.${number}.${number}`
+  , channel?: string
   } = {}
 ): [client: DelightRPC.ClientProxy<IAPI>, close: () => void] {
   const pendings: { [id: string]: Deferred<IResponse<unknown>> } = {}
@@ -31,6 +32,7 @@ export function createClient<IAPI extends object>(
   , {
       parameterValidators
     , expectedVersion
+    , channel
     }
   )
 
@@ -54,8 +56,9 @@ export function createClient<IAPI extends object>(
 
 export function createBatchClient<IAPI extends object>(
   port: Window | MessagePort | Worker
-, { expectedVersion }: {
+, { expectedVersion, channel }: {
     expectedVersion?: `${number}.${number}.${number}`
+    channel?: string
   } = {}
 ): [client: DelightRPC.BatchClient<IAPI>, close: () => void] {
   const pendings: { [id: string]: Deferred<IError | IBatchResponse<unknown>> } = {}

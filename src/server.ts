@@ -3,9 +3,10 @@ import * as DelightRPC from 'delight-rpc'
 export function createServer<IAPI extends object>(
   api: DelightRPC.ImplementationOf<IAPI>
 , port: Window | MessagePort | Worker
-, { parameterValidators, version }: {
+, { parameterValidators, version, channel }: {
     parameterValidators?: DelightRPC.ParameterValidators<IAPI>
     version?: `${number}.${number}.${number}`
+    channel?: string
   } = {}
 ): () => void {
   // `(event: MessageEvent) => void`作为handler类型通用于port的三种类型.
@@ -23,6 +24,7 @@ export function createServer<IAPI extends object>(
       , {
           parameterValidators
         , version
+        , channel
         }
       )
 
