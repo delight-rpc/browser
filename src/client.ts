@@ -1,13 +1,16 @@
 import * as DelightRPC from 'delight-rpc'
 import { Deferred } from 'extra-promise'
 import { CustomError } from '@blackglory/errors'
+import { IRequest, IResponse, IError, IBatchRequest, IBatchResponse } from '@delight-rpc/protocol'
 
 export function createClient<IAPI extends object>(
   port: Window | MessagePort | Worker
-, parameterValidators?: DelightRPC.ParameterValidators<IAPI>
-, expectedVersion?: `${number}.${number}.${number}`
+, { parameterValidators, expectedVersion }: {
+    parameterValidators?: DelightRPC.ParameterValidators<IAPI>
+  , expectedVersion?: `${number}.${number}.${number}`
+  } = {}
 ): [client: DelightRPC.ClientProxy<IAPI>, close: () => void] {
-  const pendings: { [id: string]: Deferred<DelightRPC.IResponse<unknown>> } = {}
+  const pendings: { [id: string]: Deferred<IResponse<unknown>> } = {}
 
   // `(event: MessageEvent) => void`作为handler类型通用于port的三种类型.
   // 但由于TypeScript标准库的实现方式无法将三种类型的情况合并起来, 因此会出现类型错误.
@@ -15,8 +18,8 @@ export function createClient<IAPI extends object>(
   port.addEventListener('message', handler as any)
 
   const client = DelightRPC.createClient<IAPI>(
-    async function send(request: DelightRPC.IRequest<unknown>) {
-      const res = new Deferred<DelightRPC.IResponse<unknown>>()
+    async function send(request: IRequest<unknown>) {
+      const res = new Deferred<IResponse<unknown>>()
       pendings[request.id] = res
       try {
         port.postMessage(request)
@@ -25,8 +28,10 @@ export function createClient<IAPI extends object>(
         delete pendings[request.id]
       }
     }
-  , parameterValidators
-  , expectedVersion
+  , {
+      parameterValidators
+    , expectedVersion
+    }
   )
 
   return [client, close]
@@ -49,9 +54,11 @@ export function createClient<IAPI extends object>(
 
 export function createBatchClient<IAPI extends object>(
   port: Window | MessagePort | Worker
-, expectedVersion?: `${number}.${number}.${number}`
+, { expectedVersion }: {
+    expectedVersion?: `${number}.${number}.${number}`
+  } = {}
 ): [client: DelightRPC.BatchClient<IAPI>, close: () => void] {
-  const pendings: { [id: string]: Deferred<DelightRPC.IError | DelightRPC.IBatchResponse<unknown>> } = {}
+  const pendings: { [id: string]: Deferred<IError | IBatchResponse<unknown>> } = {}
 
   // `(event: MessageEvent) => void`作为handler类型通用于port的三种类型.
   // 但由于TypeScript标准库的实现方式无法将三种类型的情况合并起来, 因此会出现类型错误.
@@ -59,8 +66,8 @@ export function createBatchClient<IAPI extends object>(
   port.addEventListener('message', handler as any)
 
   const client = new DelightRPC.BatchClient(
-    async function send(request: DelightRPC.IBatchRequest<unknown>) {
-      const res = new Deferred<DelightRPC.IError | DelightRPC.IBatchResponse<unknown>>()
+    async function send(request: IBatchRequest<unknown>) {
+      const res = new Deferred<IError | IBatchResponse<unknown>>()
       pendings[request.id] = res
       try {
         port.postMessage(request)
