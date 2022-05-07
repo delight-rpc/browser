@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.0.0](https://github.com/delight-rpc/browser/compare/v3.1.2...v4.0.0) (2022-05-07)
+
+
+### ⚠ BREAKING CHANGES
+
+* use delight-rpc@4
+
+* upgrade dependencies ([449395b](https://github.com/delight-rpc/browser/commit/449395b20e43fa96c60cd3c473632c1e9d8e5fcf))
+
 ### [3.1.2](https://github.com/delight-rpc/browser/compare/v3.1.1...v3.1.2) (2022-04-04)
 
 
