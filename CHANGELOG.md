@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.1.0](https://github.com/delight-rpc/browser/compare/v4.0.0...v4.1.0) (2022-05-07)
+
+
+### Features
+
+* add channel support ([797a0f8](https://github.com/delight-rpc/browser/commit/797a0f8dcfda48dbe52c4d02e8e63d58eebc0aae))
+
 ## [4.0.0](https://github.com/delight-rpc/browser/compare/v3.1.2...v4.0.0) (2022-05-07)
 
 
