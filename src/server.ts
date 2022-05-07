@@ -1,4 +1,5 @@
 import * as DelightRPC from 'delight-rpc'
+import { isntNull } from '@blackglory/prelude'
 
 export function createServer<IAPI extends object>(
   api: DelightRPC.ImplementationOf<IAPI>
@@ -28,7 +29,9 @@ export function createServer<IAPI extends object>(
         }
       )
 
-      port.postMessage(result)
+      if (isntNull(result)) {
+        port.postMessage(result)
+      }
     }
   }
 }

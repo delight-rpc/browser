@@ -72,6 +72,7 @@
   },
   "dependencies": {
     "@blackglory/errors": "^2.2.1",
+    "@blackglory/prelude": "^0.1.1",
     "@delight-rpc/protocol": "^2.2.0",
     "extra-promise": "^1.0.2"
   },
