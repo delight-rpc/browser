@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.1.1](https://github.com/delight-rpc/browser/compare/v4.1.0...v4.1.1) (2022-05-07)
+
+
+### Bug Fixes
+
+* handle null value ([cf176ac](https://github.com/delight-rpc/browser/commit/cf176ac88ee8ff6b10d12fcb375fab3338520b46))
+
 ## [4.1.0](https://github.com/delight-rpc/browser/compare/v4.0.0...v4.1.0) (2022-05-07)
 
 
