@@ -4,10 +4,11 @@ import { isntNull } from '@blackglory/prelude'
 export function createServer<IAPI extends object>(
   api: DelightRPC.ImplementationOf<IAPI>
 , port: Window | MessagePort | Worker
-, { parameterValidators, version, channel }: {
+, { parameterValidators, version, channel, ownPropsOnly }: {
     parameterValidators?: DelightRPC.ParameterValidators<IAPI>
     version?: `${number}.${number}.${number}`
     channel?: string
+    ownPropsOnly?: boolean
   } = {}
 ): () => void {
   // `(event: MessageEvent) => void`作为handler类型通用于port的三种类型.
@@ -26,6 +27,7 @@ export function createServer<IAPI extends object>(
           parameterValidators
         , version
         , channel
+        , ownPropsOnly
         }
       )
 
