@@ -89,7 +89,7 @@ function createClient<IAPI extends object>(
   port: Window | MessagePort | Worker
 , options?: {
     parameterValidators?: DelightRPC.ParameterValidators<IAPI>
-    expectedVersion?: `${number}.${number}.${number}`
+    expectedVersion?: string
     channel?: string
   }
 ): [client: DelightRPC.ClientProxy<IAPI>, close: () => void]
@@ -100,7 +100,7 @@ function createClient<IAPI extends object>(
 function createBatchClient<IAPI extends object>(
   port: Window | MessagePort | Worker
 , options?: {
-    expectedVersion?: `${number}.${number}.${number}`
+    expectedVersion?: string
     channel?: string
   }
 ): [client: DelightRPC.BatchClient<IAPI>, close: () => void]

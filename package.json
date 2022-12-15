@@ -30,17 +30,17 @@
     }
   },
   "devDependencies": {
-    "@commitlint/cli": "^17.0.2",
-    "@commitlint/config-conventional": "^17.0.2",
-    "@types/jasmine": "^4.0.3",
-    "@typescript-eslint/eslint-plugin": "^5.29.0",
-    "@typescript-eslint/parser": "^5.29.0",
+    "@commitlint/cli": "^17.3.0",
+    "@commitlint/config-conventional": "^17.3.0",
+    "@types/jasmine": "^4.3.1",
+    "@typescript-eslint/eslint-plugin": "^5.46.1",
+    "@typescript-eslint/parser": "^5.46.1",
     "cross-env": "^7.0.3",
-    "delight-rpc": "^4.2.1",
-    "eslint": "8.18.0",
-    "extra-filesystem": "^0.4.2",
+    "delight-rpc": "^5.0.0",
+    "eslint": "8.29.0",
+    "extra-filesystem": "^0.4.8",
     "husky": "4",
-    "karma": "^6.4.0",
+    "karma": "^6.4.1",
     "karma-chrome-launcher": "^3.1.1",
     "karma-jasmine": "^5.1.0",
     "karma-webpack": "^5.0.0",
@@ -48,20 +48,20 @@
     "return-style": "^1.0.0",
     "rimraf": "^3.0.2",
     "standard-version": "^9.5.0",
-    "ts-loader": "^9.3.0",
-    "tsconfig-paths-webpack-plugin": "^3.5.2",
+    "ts-loader": "^9.4.2",
+    "tsconfig-paths-webpack-plugin": "^4.0.0",
     "tscpaths": "^0.0.9",
-    "tslib": "^2.4.0",
+    "tslib": "^2.4.1",
     "typescript": "^4.7.4",
-    "webpack": "^5.73.0"
+    "webpack": "^5.75.0"
   },
   "dependencies": {
-    "@blackglory/errors": "^2.2.1",
-    "@blackglory/prelude": "^0.1.2",
-    "@delight-rpc/protocol": "^2.2.0",
-    "extra-promise": "^2.2.0"
+    "@blackglory/errors": "^2.3.0",
+    "@blackglory/prelude": "^0.1.8",
+    "@delight-rpc/protocol": "^3.0.0",
+    "extra-promise": "^4.4.0"
   },
   "peerDependencies": {
-    "delight-rpc": "^4.2.1"
+    "delight-rpc": "^5.0.0"
   }
 }
