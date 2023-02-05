@@ -11,7 +11,7 @@ export function createClient<IAPI extends object>(
   , channel?: string
   } = {}
 ): [client: DelightRPC.ClientProxy<IAPI>, close: () => void] {
-  const pendings: { [id: string]: Deferred<IResponse<unknown>> } = {}
+  const pendings: Record<string, Deferred<IResponse<unknown>> | undefined> = {}
 
   // `(event: MessageEvent) => void`作为handler类型通用于port的三种类型.
   // 但由于TypeScript标准库的实现方式无法将三种类型的情况合并起来, 因此会出现类型错误.
@@ -41,7 +41,7 @@ export function createClient<IAPI extends object>(
   function close(): void {
     port.removeEventListener('message', handler as any)
     for (const [key, deferred] of Object.entries(pendings)) {
-      deferred.reject(new ClientClosed())
+      deferred!.reject(new ClientClosed())
       delete pendings[key]
     }
   }
@@ -49,7 +49,7 @@ export function createClient<IAPI extends object>(
   function handler(event: MessageEvent) {
     const res = event.data
     if (DelightRPC.isResult(res) || DelightRPC.isError(res)) {
-      pendings[res.id].resolve(res)
+      pendings[res.id]?.resolve(res)
     }
   }
 }
@@ -61,7 +61,11 @@ export function createBatchClient<IAPI extends object>(
     channel?: string
   } = {}
 ): [client: DelightRPC.BatchClient<IAPI>, close: () => void] {
-  const pendings: { [id: string]: Deferred<IError | IBatchResponse<unknown>> } = {}
+  const pendings: Record<
+    string
+  , | Deferred<IError | IBatchResponse<unknown>>
+    | undefined
+  > = {}
 
   // `(event: MessageEvent) => void`作为handler类型通用于port的三种类型.
   // 但由于TypeScript标准库的实现方式无法将三种类型的情况合并起来, 因此会出现类型错误.
@@ -90,7 +94,7 @@ export function createBatchClient<IAPI extends object>(
   function close(): void {
     port.removeEventListener('message', handler as any)
     for (const [key, deferred] of Object.entries(pendings)) {
-      deferred.reject(new ClientClosed())
+      deferred!.reject(new ClientClosed())
       delete pendings[key]
     }
   }
@@ -98,7 +102,7 @@ export function createBatchClient<IAPI extends object>(
   function handler(event: MessageEvent) {
     const res = event.data
     if (DelightRPC.isError(res) || DelightRPC.isBatchResponse(res)) {
-      pendings[res.id].resolve(res)
+      pendings[res.id]?.resolve(res)
     }
   }
 }
