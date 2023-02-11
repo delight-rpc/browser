@@ -54,13 +54,13 @@ export function createClient<IAPI extends object>(
   }
 }
 
-export function createBatchClient<IAPI extends object>(
+export function createBatchClient<DataType>(
   port: Window | MessagePort | Worker
 , { expectedVersion, channel }: {
     expectedVersion?: string
     channel?: string
   } = {}
-): [client: DelightRPC.BatchClient<IAPI>, close: () => void] {
+): [client: DelightRPC.BatchClient<DataType>, close: () => void] {
   const pendings: Record<
     string
   , | Deferred<IError | IBatchResponse<unknown>>
