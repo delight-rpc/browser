@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [5.0.2](https://github.com/delight-rpc/browser/compare/v5.0.1...v5.0.2) (2023-02-11)
+
+
+### Bug Fixes
+
+* types of `createBatchClient` ([82de6c6](https://github.com/delight-rpc/browser/commit/82de6c61330667308a4612b72bb7ca5a6a24c791))
+
 ### [5.0.1](https://github.com/delight-rpc/browser/compare/v5.0.0...v5.0.1) (2023-02-05)
 
 ## [5.0.0](https://github.com/delight-rpc/browser/compare/v4.1.6...v5.0.0) (2022-12-15)
