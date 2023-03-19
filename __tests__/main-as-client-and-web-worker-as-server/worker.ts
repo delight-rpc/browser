@@ -1,5 +1,5 @@
-import { createServer } from '@src/server'
-import { IAPI } from './api'
+import { createServer } from '@src/server.js'
+import { IAPI } from './contract.js'
 
 const api: IAPI = {
   echo(message: string): string {

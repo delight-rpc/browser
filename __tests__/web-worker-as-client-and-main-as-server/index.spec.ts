@@ -1,6 +1,6 @@
-import { createServer } from '@src/server'
-import { createClient } from '@src/client'
-import { IAPI } from './api'
+import { createServer } from '@src/server.js'
+import { createClient } from '@src/client.js'
+import { IAPI } from './contract.js'
 import { getErrorPromise } from 'return-style'
 
 const api: IAPI = {

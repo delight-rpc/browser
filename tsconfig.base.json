@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
-    "target": "ES2019"
-  , "module": "ESNext"
+    "target": "ES2018"
+  , "module": "NodeNext"
+  , "moduleResolution": "NodeNext"
   , "strict": true
-  , "moduleResolution": "node"
   , "esModuleInterop": true
   , "baseUrl": "."
   , "paths": {
@@ -11,5 +11,9 @@
     , "@utils/*": ["src/utils/*"]
     , "@test/*": ["__tests__/*"]
     }
+  , "plugins": [
+      { "transform": "typescript-transform-paths" }
+    , { "transform": "typescript-transform-paths", "afterDeclarations": true }
+    ]
   }
 }

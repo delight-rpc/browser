@@ -1,5 +1,5 @@
-import { createClient } from '@src/client'
-import { IAPI } from './api'
+import { createClient } from '@src/client.js'
+import { IAPI } from './contract.js'
 import { getErrorPromise } from 'return-style'
 
 describe('Main as Client, Web Worker as Server', () => {

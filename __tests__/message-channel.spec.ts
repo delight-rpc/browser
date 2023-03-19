@@ -1,5 +1,5 @@
-import { createClient } from '@src/client'
-import { createServer } from '@src/server'
+import { createClient } from '@src/client.js'
+import { createServer } from '@src/server.js'
 import { getErrorPromise } from 'return-style'
 
 interface IAPI {

@@ -6,38 +6,41 @@
   "files": [
     "lib"
   ],
+  "type": "module",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
+  "sideEffects": false,
+  "engines": {
+    "node": ">=16"
+  },
   "repository": "git@github.com:delight-rpc/browser.git",
   "author": "BlackGlory <woshenmedoubuzhidao@blackglory.me>",
   "license": "MIT",
-  "sideEffects": false,
   "scripts": {
+    "prepare": "ts-patch install -s",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx --quiet src",
-    "test": "karma start karma.config.js --single-run",
-    "test:dev": "karma start karma.config.js",
-    "prepublishOnly": "run-s clean build",
+    "test": "karma start karma.config.cjs --single-run",
+    "test:dev": "karma start karma.config.cjs",
+    "prepublishOnly": "run-s prepare clean build",
     "clean": "rimraf lib",
-    "build": "run-s build:*",
-    "build:compile": "tsc --project tsconfig.build.json --module commonjs --target es2018 --outDir lib",
-    "build:patch": "tscpaths -p tsconfig.build.json -s ./src -o ./lib",
+    "build": "tsc --project tsconfig.build.json",
     "release": "standard-version"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "run-s lint test",
+      "pre-commit": "run-s prepare lint build test",
       "commit-msg": "commitlint --env HUSKY_GIT_PARAMS"
     }
   },
   "devDependencies": {
-    "@commitlint/cli": "^17.3.0",
-    "@commitlint/config-conventional": "^17.3.0",
+    "@commitlint/cli": "^17.4.4",
+    "@commitlint/config-conventional": "^17.4.4",
     "@types/jasmine": "^4.3.1",
-    "@typescript-eslint/eslint-plugin": "^5.46.1",
-    "@typescript-eslint/parser": "^5.46.1",
+    "@typescript-eslint/eslint-plugin": "^5.55.0",
+    "@typescript-eslint/parser": "^5.55.0",
     "cross-env": "^7.0.3",
-    "delight-rpc": "^5.0.0",
-    "eslint": "8.29.0",
+    "delight-rpc": "^6.0.0",
+    "eslint": "8.36.0",
     "extra-filesystem": "^0.4.8",
     "husky": "4",
     "karma": "^6.4.1",
@@ -45,23 +48,24 @@
     "karma-jasmine": "^5.1.0",
     "karma-webpack": "^5.0.0",
     "npm-run-all": "^4.1.5",
-    "return-style": "^1.0.0",
+    "return-style": "^3.0.0",
     "rimraf": "^3.0.2",
     "standard-version": "^9.5.0",
     "ts-loader": "^9.4.2",
-    "tsconfig-paths-webpack-plugin": "^4.0.0",
-    "tscpaths": "^0.0.9",
+    "ts-patch": "^2.1.0",
+    "tsconfig-paths-webpack-plugin": "^4.0.1",
     "tslib": "^2.4.1",
     "typescript": "4.8",
-    "webpack": "^5.75.0"
+    "typescript-transform-paths": "^3.4.6",
+    "webpack": "^5.76.2"
   },
   "dependencies": {
-    "@blackglory/errors": "^2.3.0",
-    "@blackglory/prelude": "^0.1.8",
+    "@blackglory/errors": "^3.0.0",
+    "@blackglory/prelude": "^0.3.1",
     "@delight-rpc/protocol": "^3.0.0",
-    "extra-promise": "^4.4.0"
+    "extra-promise": "^6.0.5"
   },
   "peerDependencies": {
-    "delight-rpc": "^5.0.0"
+    "delight-rpc": "^5.0.0 || ^6.0.0"
   }
 }

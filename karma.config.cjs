@@ -4,7 +4,7 @@
 // https://github.com/ryanclark/karma-webpack/issues/498#issuecomment-790040818
 
 const { createTempNameSync } = require('extra-filesystem')
-const webpack = require('./webpack.config')
+const webpack = require('./webpack.config.cjs')
 
 const webpackOutput = createTempNameSync()
 
