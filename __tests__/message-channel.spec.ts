@@ -1,4 +1,5 @@
-import { createClient } from '@src/client.js'
+import { createBatchProxy } from 'delight-rpc'
+import { createClient, createBatchClient } from '@src/client.js'
 import { createServer } from '@src/server.js'
 import { getErrorPromise } from 'return-style'
 
@@ -39,12 +40,36 @@ describe('MessageChannel: createClient, createServer', () => {
     expect(result).toBe('hello')
   })
 
+  it('echo (batch)', async () => {
+    const [client, close] = createBatchClient(channel.port2)
+    const proxy = createBatchProxy<IAPI>()
+
+    const result = await client.parallel(proxy.echo('hello'))
+    close()
+
+    expect(result.length).toBe(1)
+    expect(result[0].unwrap()).toBe('hello')
+  })
+
   it('error', async () => {
     const [client, close] = createClient<IAPI>(channel.port2)
 
     const err = await getErrorPromise(client.error('hello'))
     close()
 
+    expect(err).toBeInstanceOf(Error)
+    expect(err!.message).toMatch('hello')
+  })
+
+  it('error (batch)', async () => {
+    const [client, close] = createBatchClient(channel.port2)
+    const proxy = createBatchProxy<IAPI>()
+
+    const result = await client.parallel(proxy.error('hello'))
+    close()
+
+    expect(result.length).toBe(1)
+    const err = result[0].unwrapErr()
     expect(err).toBeInstanceOf(Error)
     expect(err!.message).toMatch('hello')
   })
