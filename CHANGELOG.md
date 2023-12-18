@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.1.0](https://github.com/delight-rpc/browser/compare/v6.0.2...v6.1.0) (2023-12-18)
+
+
+### Features
+
+* add `createHTTPHandler` ([4d1a702](https://github.com/delight-rpc/browser/commit/4d1a702e27c790b75110b8e21ff24cf34b14a457))
+
 ### [6.0.2](https://github.com/delight-rpc/browser/compare/v6.0.1...v6.0.2) (2023-06-10)
 
 
