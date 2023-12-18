@@ -119,3 +119,17 @@ function createServer<IAPI extends object>(
   }
 ): () => void
 ```
+
+### createHTTPHandler
+```ts
+function createHTTPHandler<IAPI>(
+  api: DelightRPC.ImplementationOf<IAPI>
+, options?: {
+    basicAuth?: (username: string, password: string) => Awaitable<boolean>
+    parameterValidators?: DelightRPC.ParameterValidators<IAPI>
+    version?: `${number}.${number}.${number}`
+    ownPropsOnly?: boolean
+    channel?: string | RegExp | typeof DelightRPC.AnyChannel
+  }
+): (req: Request) => Promise<Response>
+```

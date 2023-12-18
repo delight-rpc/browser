@@ -15,5 +15,6 @@ module.exports = {
   , '@typescript-eslint/no-extra-semi': 'off'
   , '@typescript-eslint/no-inferrable-types': 'off'
   , '@typescript-eslint/ban-types': 'off'
+  , '@typescript-eslint/no-explicit-any': 'off'
   }
 }
