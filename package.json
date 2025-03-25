@@ -12,7 +12,7 @@
   "types": "lib/index.d.ts",
   "sideEffects": false,
   "engines": {
-    "node": ">=16"
+    "node": ">=22"
   },
   "repository": "git@github.com:delight-rpc/browser.git",
   "author": "BlackGlory <woshenmedoubuzhidao@blackglory.me>",
@@ -40,11 +40,11 @@
     "@typescript-eslint/parser": "^6.14.0",
     "@vitest/browser": "^3.0.9",
     "cross-env": "^7.0.3",
-    "delight-rpc": "^6.0.0",
+    "delight-rpc": "^6.1.2",
     "eslint": "8.36.0",
     "extra-fetch": "^4.0.7",
-    "extra-filesystem": "^0.4.8",
-    "extra-request": "^8.5.2",
+    "extra-filesystem": "^0.5.2",
+    "extra-request": "^9.0.1",
     "extra-response": "^0.5.2",
     "husky": "4",
     "npm-run-all": "^4.1.5",
@@ -61,11 +61,11 @@
     "vitest": "^3.0.9"
   },
   "dependencies": {
-    "@blackglory/errors": "^3.0.0",
-    "@blackglory/prelude": "^0.3.1",
-    "@delight-rpc/protocol": "^4.0.0",
-    "extra-promise": "^6.0.5",
-    "js-base64": "^3.7.5"
+    "@blackglory/errors": "^3.0.3",
+    "@blackglory/prelude": "^0.4.0",
+    "@delight-rpc/protocol": "^4.1.1",
+    "extra-promise": "^7.0.0",
+    "js-base64": "^3.7.7"
   },
   "peerDependencies": {
     "delight-rpc": "^5.0.0 || ^6.0.0"
