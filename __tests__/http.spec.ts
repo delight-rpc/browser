@@ -1,3 +1,4 @@
+import { describe, it, expect } from 'vitest'
 import { ClientProxy, createClient } from 'delight-rpc'
 import { createHTTPHandler } from '@src/http.js'
 import { post } from 'extra-request'

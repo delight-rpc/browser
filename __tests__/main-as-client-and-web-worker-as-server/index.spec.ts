@@ -1,3 +1,4 @@
+import { describe, it, expect, beforeEach, afterEach } from 'vitest'
 import { createClient } from '@src/client.js'
 import { IAPI } from './contract.js'
 import { getErrorPromise } from 'return-style'
@@ -5,7 +6,10 @@ import { getErrorPromise } from 'return-style'
 describe('Main as Client, Web Worker as Server', () => {
   let worker: Worker
   beforeEach(() => {
-    worker = new Worker(new URL('./worker.ts', import.meta.url))
+    worker = new Worker(
+      new URL('./worker.ts', import.meta.url)
+    , { type: 'module' }
+    )
   })
   afterEach(() => worker.terminate())
 

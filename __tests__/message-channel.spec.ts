@@ -1,3 +1,4 @@
+import { describe, it, expect, beforeEach, afterEach } from 'vitest'
 import { createBatchProxy } from 'delight-rpc'
 import { createClient, createBatchClient } from '@src/client.js'
 import { createServer } from '@src/server.js'
