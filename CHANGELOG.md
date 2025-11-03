@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [7.0.0](https://github.com/delight-rpc/browser/compare/v6.1.0...v7.0.0) (2025-11-03)
+
+
+### ⚠ BREAKING CHANGES
+
+* Node.js v16 => Node.js v22
+
+* upgrade dependencies ([1d2f36a](https://github.com/delight-rpc/browser/commit/1d2f36a302141c5986490614737ecbd09c285f36))
+
 ## [6.1.0](https://github.com/delight-rpc/browser/compare/v6.0.2...v6.1.0) (2023-12-18)
 
 
