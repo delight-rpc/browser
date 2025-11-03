@@ -11,22 +11,19 @@ export function createClient<IAPI extends object>(
   , channel?: string
   } = {}
 ): [client: DelightRPC.ClientProxy<IAPI>, close: () => void] {
-  const pendings: Record<string, Deferred<IResponse<unknown>> | undefined> = {}
+  const pendings: Map<string, Deferred<IResponse<unknown>>> = new Map()
 
-  // `(event: MessageEvent) => void`作为handler类型通用于port的三种类型.
-  // 但由于TypeScript标准库的实现方式无法将三种类型的情况合并起来, 因此会出现类型错误.
-  // 该问题也许会在未来版本的TypeScript解决, 我目前找不到比用any忽略掉它更适合的处理方式.
-  port.addEventListener('message', handler as any)
+  port.addEventListener('message', handler as EventListenerOrEventListenerObject)
 
   const client = DelightRPC.createClient<IAPI>(
     async function send(request: IRequest<unknown>) {
       const res = new Deferred<IResponse<unknown>>()
-      pendings[request.id] = res
+      pendings.set(request.id, res)
       try {
         port.postMessage(request)
         return await res
       } finally {
-        delete pendings[request.id]
+        pendings.delete(request.id)
       }
     }
   , {
@@ -39,17 +36,17 @@ export function createClient<IAPI extends object>(
   return [client, close]
 
   function close(): void {
-    port.removeEventListener('message', handler as any)
+    port.removeEventListener('message', handler as EventListenerOrEventListenerObject)
     for (const [key, deferred] of Object.entries(pendings)) {
-      deferred!.reject(new ClientClosed())
-      delete pendings[key]
+      deferred.reject(new ClientClosed())
+      pendings.delete(key)
     }
   }
 
   function handler(event: MessageEvent) {
     const res = event.data
     if (DelightRPC.isResult(res) || DelightRPC.isError(res)) {
-      pendings[res.id]?.resolve(res)
+      pendings.get(res.id)?.resolve(res)
     }
   }
 }
@@ -61,26 +58,22 @@ export function createBatchClient<DataType>(
     channel?: string
   } = {}
 ): [client: DelightRPC.BatchClient<DataType>, close: () => void] {
-  const pendings: Record<
+  const pendings: Map<
     string
-  , | Deferred<IError | IBatchResponse<unknown>>
-    | undefined
-  > = {}
+  , Deferred<IError | IBatchResponse<unknown>>
+  > = new Map()
 
-  // `(event: MessageEvent) => void`作为handler类型通用于port的三种类型.
-  // 但由于TypeScript标准库的实现方式无法将三种类型的情况合并起来, 因此会出现类型错误.
-  // 该问题也许会在未来版本的TypeScript解决, 我目前找不到比用any忽略掉它更适合的处理方式.
-  port.addEventListener('message', handler as any)
+  port.addEventListener('message', handler as EventListenerOrEventListenerObject)
 
   const client = new DelightRPC.BatchClient(
     async function send(request: IBatchRequest<unknown>) {
       const res = new Deferred<IError | IBatchResponse<unknown>>()
-      pendings[request.id] = res
+      pendings.set(request.id, res)
       try {
         port.postMessage(request)
         return await res
       } finally {
-        delete pendings[request.id]
+        pendings.delete(request.id)
       }
     }
   , {
@@ -92,17 +85,17 @@ export function createBatchClient<DataType>(
   return [client, close]
 
   function close(): void {
-    port.removeEventListener('message', handler as any)
+    port.removeEventListener('message', handler as EventListenerOrEventListenerObject)
     for (const [key, deferred] of Object.entries(pendings)) {
-      deferred!.reject(new ClientClosed())
-      delete pendings[key]
+      deferred.reject(new ClientClosed())
+      pendings.delete(key)
     }
   }
 
   function handler(event: MessageEvent) {
     const res = event.data
     if (DelightRPC.isError(res) || DelightRPC.isBatchResponse(res)) {
-      pendings[res.id]?.resolve(res)
+      pendings.get(res.id)?.resolve(res)
     }
   }
 }
