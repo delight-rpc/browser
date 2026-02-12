@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [7.0.1](https://github.com/delight-rpc/browser/compare/v7.0.0...v7.0.1) (2026-02-12)
+
+
+### Bug Fixes
+
+* **client:** replace `Object.entries()` with `Map#entries()` ([8e17084](https://github.com/delight-rpc/browser/commit/8e17084b3bcf3a836e2cfe979cfeb22e34740f70))
+
 ## [7.0.0](https://github.com/delight-rpc/browser/compare/v6.1.0...v7.0.0) (2025-11-03)
 
 
