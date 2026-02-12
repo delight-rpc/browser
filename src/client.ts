@@ -37,7 +37,7 @@ export function createClient<IAPI extends object>(
 
   function close(): void {
     port.removeEventListener('message', handler as EventListenerOrEventListenerObject)
-    for (const [key, deferred] of Object.entries(pendings)) {
+    for (const [key, deferred] of pendings.entries()) {
       deferred.reject(new ClientClosed())
       pendings.delete(key)
     }
@@ -86,7 +86,7 @@ export function createBatchClient<DataType>(
 
   function close(): void {
     port.removeEventListener('message', handler as EventListenerOrEventListenerObject)
-    for (const [key, deferred] of Object.entries(pendings)) {
+    for (const [key, deferred] of pendings.entries()) {
       deferred.reject(new ClientClosed())
       pendings.delete(key)
     }
