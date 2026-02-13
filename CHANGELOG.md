@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [7.1.0](https://github.com/delight-rpc/browser/compare/v7.0.1...v7.1.0) (2026-02-13)
+
+
+### Features
+
+* **http:** handle invalid json ([aba0873](https://github.com/delight-rpc/browser/commit/aba087386554ad0a3deb07d8acdb40bea7461e05))
+
 ### [7.0.1](https://github.com/delight-rpc/browser/compare/v7.0.0...v7.0.1) (2026-02-12)
 
 
