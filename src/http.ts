@@ -1,6 +1,7 @@
 import * as DelightRPC from 'delight-rpc'
 import { Awaitable, isNull } from '@blackglory/prelude'
 import * as Base64 from 'js-base64'
+import { getErrorResultAsync } from 'return-style'
 
 export function createHTTPHandler<IAPI>(
   api: DelightRPC.ImplementationOf<IAPI>
@@ -42,8 +43,18 @@ export function createHTTPHandler<IAPI>(
   }
 
   async function handle(req: Request): Promise<Response> {
-    const request = await req.json()
-    if (DelightRPC.isRequest(request) || DelightRPC.isBatchRequest(request)) {
+    const [error, request] = await getErrorResultAsync(() => req.json())
+    if (error) {
+      return new Response('The payload is not valid JSON', {
+        status: 400
+      , headers: commonHeaders
+      })
+    }
+
+    if (
+      DelightRPC.isRequest(request) ||
+      DelightRPC.isBatchRequest(request)
+    ) {
       const response = await DelightRPC.createResponse(
         api
       , request

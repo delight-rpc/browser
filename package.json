@@ -49,7 +49,6 @@
     "husky": "4",
     "npm-run-all": "^4.1.5",
     "playwright": "^1.51.1",
-    "return-style": "^3.0.1",
     "rimraf": "^5.0.5",
     "standard-version": "^9.5.0",
     "ts-patch": "^3.1.1",
@@ -65,7 +64,8 @@
     "@blackglory/prelude": "^0.4.0",
     "@delight-rpc/protocol": "^4.1.1",
     "extra-promise": "^7.0.0",
-    "js-base64": "^3.7.7"
+    "js-base64": "^3.7.7",
+    "return-style": "^3.0.1"
   },
   "peerDependencies": {
     "delight-rpc": "^5.0.0 || ^6.0.0"
