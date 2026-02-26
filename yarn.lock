@@ -195,7 +195,7 @@
     iterable-operator "^4.0.3"
     justypes "^4.2.0"
 
-"@blackglory/structures@^0.14.12":
+"@blackglory/structures@^0.14.12", "@blackglory/structures@^0.14.13":
   version "0.14.13"
   resolved "https://registry.yarnpkg.com/@blackglory/structures/-/structures-0.14.13.tgz#4edf1df75393ed0bc730004d061f119b8e398f72"
   integrity sha512-uQ2g/ESKYpkjTRF4trAqcpqY/nvQXRtbOy1gWINqRMLhaEZN4ey9F2iTWKW/Idrgkm234VmXAlNoauLyT5NqGQ==
@@ -2099,6 +2099,13 @@ extra-response@^0.6.1:
   dependencies:
     "@blackglory/prelude" "^0.4.0"
     iterable-operator "^5.1.0"
+
+extra-tags@^0.5.4:
+  version "0.5.4"
+  resolved "https://registry.yarnpkg.com/extra-tags/-/extra-tags-0.5.4.tgz#74e0d282fe881c95e58b82095eb1d0f76df89079"
+  integrity sha512-la5n78qvNOVaS16VVJvUkFcmlaLENOzN0DkTgm8YBYr3xgc2Yhap5brMmZrOE2WfP4cPQfxFBdSJQUuxHwrElw==
+  dependencies:
+    extra-utils "^5.16.0"
 
 extra-timers@^0.2.5:
   version "0.2.5"

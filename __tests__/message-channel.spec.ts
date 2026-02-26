@@ -1,20 +1,33 @@
-import { describe, it, expect, beforeEach, afterEach } from 'vitest'
-import { createBatchProxy } from 'delight-rpc'
+import { describe, test, expect, beforeEach, afterEach } from 'vitest'
+import { createBatchProxy, ImplementationOf } from 'delight-rpc'
 import { createClient, createBatchClient } from '@src/client.js'
 import { createServer } from '@src/server.js'
 import { getErrorPromise } from 'return-style'
+import { assert } from '@blackglory/prelude'
+import { delay } from 'extra-promise'
+import { AbortController, AbortError } from 'extra-abort'
 
 interface IAPI {
   echo(message: string): string
   error(message: string): never
+  loop(): never
 }
 
-const api: IAPI = {
+const api: ImplementationOf<IAPI> = {
   echo(message: string): string {
     return message
   }
 , error(message: string): never {
     throw new Error(message)
+  }
+, async loop(signal?: AbortSignal): Promise<never> {
+    assert(signal)
+
+    while (!signal.aborted) {
+      await delay(100)
+    }
+
+    throw signal.reason
   }
 }
 
@@ -32,46 +45,58 @@ describe('MessageChannel: createClient, createServer', () => {
     stopServer()
   })
 
-  it('echo', async () => {
+  test('result', async () => {
     const [client, close] = createClient<IAPI>(channel.port2)
 
-    const result = await client.echo('hello')
+    const result = await client.echo('foo')
     close()
 
-    expect(result).toBe('hello')
+    expect(result).toBe('foo')
   })
 
-  it('echo (batch)', async () => {
+  test('result (batch)', async () => {
     const [client, close] = createBatchClient(channel.port2)
     const proxy = createBatchProxy<IAPI>()
 
-    const result = await client.parallel(proxy.echo('hello'))
+    const result = await client.parallel(proxy.echo('foo'))
     close()
 
     expect(result.length).toBe(1)
-    expect(result[0].unwrap()).toBe('hello')
+    expect(result[0].unwrap()).toBe('foo')
   })
 
-  it('error', async () => {
+  test('error', async () => {
     const [client, close] = createClient<IAPI>(channel.port2)
 
-    const err = await getErrorPromise(client.error('hello'))
+    const err = await getErrorPromise(client.error('foo'))
     close()
 
     expect(err).toBeInstanceOf(Error)
-    expect(err!.message).toMatch('hello')
+    expect(err?.message).toMatch('foo')
   })
 
-  it('error (batch)', async () => {
+  test('error (batch)', async () => {
     const [client, close] = createBatchClient(channel.port2)
     const proxy = createBatchProxy<IAPI>()
 
-    const result = await client.parallel(proxy.error('hello'))
+    const result = await client.parallel(proxy.error('foo'))
     close()
 
     expect(result.length).toBe(1)
     const err = result[0].unwrapErr()
     expect(err).toBeInstanceOf(Error)
-    expect(err!.message).toMatch('hello')
+    expect(err?.message).toMatch('foo')
+  })
+
+  test('abort', async () => {
+    const [client, close] = createClient<IAPI>(channel.port2)
+    const controller = new AbortController()
+
+    const promise = getErrorPromise(client.loop(controller.signal))
+    controller.abort()
+    const err = await promise
+    close()
+
+    expect(err).toBeInstanceOf(AbortError)
   })
 })
