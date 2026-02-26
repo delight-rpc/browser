@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [8.0.0](https://github.com/delight-rpc/browser/compare/v7.1.0...v8.0.0) (2026-02-26)
+
+
+### ⚠ BREAKING CHANGES
+
+* - Modified the return value of `createClient`
+- Modified the return value of `createBatchClient`
+- Modified the return value of `createHTTPHandler`
+
+### Features
+
+* add support for `DelightRPC.Abort` and `delight-rpc@^7.0.0` ([fb068bb](https://github.com/delight-rpc/browser/commit/fb068bb3cca0ad8df9f42a2aaa2b8e981360763e))
+
 ## [7.1.0](https://github.com/delight-rpc/browser/compare/v7.0.1...v7.1.0) (2026-02-13)
 
 
