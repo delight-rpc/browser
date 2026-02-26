@@ -7,8 +7,8 @@ export function createClient<IAPI extends object>(
   port: Window | MessagePort | Worker
 , { parameterValidators, expectedVersion, channel }: {
     parameterValidators?: DelightRPC.ParameterValidators<IAPI>
-  , expectedVersion?: string
-  , channel?: string
+    expectedVersion?: string
+    channel?: string
   } = {}
 ): [client: DelightRPC.ClientProxy<IAPI>, close: () => void] {
   const pendings: Map<string, Deferred<IResponse<unknown>>> = new Map()
